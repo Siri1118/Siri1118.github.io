@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisi Li | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Microsoft YaHei", Arial, sans-serif;
+            background: #f7f8f3;
+            color: #263238;
+            line-height: 1.7;
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            width: 100%;
+            height: 78px;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            color: #7cc36a;
+            font-size: 26px;
+            letter-spacing: 8px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 10px;
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        .nav-links a {
+            color: #6cae5d;
+            text-decoration: none;
+            margin-left: 26px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #3b7f33;
+        }
+
+        /* 顶部大背景 */
+        .hero {
+            height: 330px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 18% 35%, rgba(255,255,255,0.55) 0 8%, transparent 9%),
+                radial-gradient(circle at 82% 30%, rgba(255,255,255,0.35) 0 10%, transparent 11%),
+                linear-gradient(135deg, #ffd7cc 0%, #ffe5b7 45%, #dff3d6 100%);
+        }
+
+        .hill {
+            position: absolute;
+            bottom: -70px;
+            width: 380px;
+            height: 190px;
+            border-radius: 50% 50% 0 0;
+            background: rgba(124, 195, 106, 0.35);
+        }
+
+        .hill.one {
+            left: -80px;
+        }
+
+        .hill.two {
+            right: -40px;
+            width: 470px;
+            height: 220px;
+            background: rgba(124, 195, 106, 0.45);
+        }
+
+        .star {
+            position: absolute;
+            color: rgba(255,255,255,0.8);
+            font-size: 26px;
+        }
+
+        .star.s1 {
+            top: 60px;
+            left: 20%;
+        }
+
+        .star.s2 {
+            top: 120px;
+            right: 18%;
+        }
+
+        .star.s3 {
+            top: 210px;
+            left: 60%;
+        }
+
+        /* 个人档案卡 */
+        .profile-card {
+            width: 78%;
+            max-width: 860px;
+            margin: -110px auto 42px;
+            background: #ffffff;
+            border-radius: 24px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 86px 46px 32px;
+            box-shadow: 0 8px 24px rgba(74, 120, 64, 0.18);
+            border: 2px solid rgba(124, 195, 106, 0.25);
+        }
+
+        .avatar {
+            width: 165px;
+            height: 165px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e9f8dc, #fff0b8);
+            border: 6px solid white;
+            position: absolute;
+            top: -86px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: #69b85a;
+            font-weight: 800;
+        }
+
+        .tag {
+            display: inline-block;
+            border: 2px solid #8ed17d;
+            color: #6ab85e;
+            padding: 4px 14px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .profile-card h1 {
+            font-size: 44px;
+            line-height: 1.12;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .underline {
+            width: 82px;
+            height: 8px;
+            background: #7cc36a;
+            border-radius: 20px;
+            margin: 20px auto 28px;
+        }
+
+        .profile-info {
+            background: #eaf7e4;
+            margin: 0 -46px -32px;
+            padding: 24px 48px;
+            border-radius: 0 0 22px 22px;
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+            color: #5f6b61;
+            font-size: 16px;
+        }
+
+        .profile-info strong {
+            color: #4d5a4f;
+        }
+
+        /* 页面主体 */
+        .container {
+            width: 78%;
+            max-width: 860px;
+            margin: 0 auto 60px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1.1fr;
+            gap: 26px;
+            margin-bottom: 26px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 2px solid #9bd88e;
+            border-radius: 22px;
+            padding: 34px;
+            box-shadow: 0 5px 14px rgba(74, 120, 64, 0.13);
+        }
+
+        .card h2 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+
+        .card h2::after {
+            content: "";
+            display: block;
+            width: 62px;
+            height: 5px;
+            background: #7cc36a;
+            margin-top: 8px;
+            border-radius: 20px;
+        }
+
+        .about p {
+            margin-bottom: 10px;
+            color: #606b63;
+        }
+
+        .about strong {
+            color: #323b35;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .skill-list span {
+            background: #eaf7e4;
+            color: #5da852;
+            padding: 7px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .small-card {
+            text-align: center;
+        }
+
+        .small-card .icon {
+            font-size: 42px;
+            margin: 18px 0;
+        }
+
+        .small-card p {
+            color: #68736a;
+        }
+
+        /* 项目排行 */
+        .projects {
+            margin-top: 26px;
+        }
+
+        .project-top {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            align-items: end;
+            margin: 28px 0;
+        }
+
+        .project-item {
+            background: #f7faf5;
+            border-radius: 16px;
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid rgba(124, 195, 106, 0.35);
+        }
+
+        .project-item.featured {
+            transform: translateY(-18px);
+            background: #c8ffa7;
+        }
+
+        .project-icon {
+            width: 76px;
+            height: 76px;
+            margin: 20px auto 10px;
+            border-radius: 50%;
+            background: #253238;
+            color: #8ee276;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            border: 5px solid #7cc36a;
+        }
+
+        .project-item h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .project-item p {
+            font-size: 13px;
+            color: #58635b;
+            padding: 0 14px 16px;
+        }
+
+        .rank-bar {
+            background: #8ccc74;
+            color: white;
+            padding: 10px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .project-list {
+            margin-top: 18px;
+        }
+
+        .project-row {
+            background: #86ad72;
+            color: white;
+            border-radius: 8px;
+            padding: 12px 24px;
+            margin: 10px 0;
+            display: grid;
+            grid-template-columns: 60px 1fr 120px;
+            align-items: center;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .project-row:nth-child(even) {
+            background: #9bc983;
+        }
+
+        /* 生活兴趣 */
+        .life {
+            margin-top: 26px;
+        }
+
+        .life-boxes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .life-box {
+            background: #f4fbef;
+            border-radius: 16px;
+            text-align: center;
+            padding: 20px 10px;
+            color: #5c6a5f;
+            font-weight: 600;
+        }
+
+        .life-box span {
+            display: block;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        /* 联系方式 */
+        .contact {
+            margin-top: 26px;
+            text-align: center;
+        }
+
+        .contact p {
+            color: #5e6a61;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #8a948b;
+            font-size: 14px;
+        }
+
+        /* 手机适配 */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-links a {
+                margin-left: 12px;
+                font-size: 13px;
+            }
+
+            .profile-card,
+            .container {
+                width: 90%;
+            }
+
+            .profile-card h1 {
+                font-size: 32px;
+            }
+
+            .profile-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .grid,
+            .project-top,
+            .life-boxes {
+                grid-template-columns: 1fr;
+            }
+
+            .project-item.featured {
+                transform: translateY(0);
+            }
+
+            .project-row {
+                grid-template-columns: 45px 1fr;
+                gap: 8px;
+            }
+
+            .project-row span:last-child {
+                grid-column: 2;
+                font-size: 13px;
+                font-weight: 400;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 顶部导航 -->
+    <div class="navbar">
+        <div class="logo">
+            SISI
+            <span>DESIGN</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#about">关于我</a>
+            <a href="#projects">项目</a>
+            <a href="#life">生活</a>
+            <a href="#contact">联系</a>
+        </div>
+    </div>
+
+    <!-- 顶部背景 -->
+    <section class="hero">
+        <div class="hill one"></div>
+        <div class="hill two"></div>
+        <div class="star s1">✦</div>
+        <div class="star s2">✧</div>
+        <div class="star s3">✦</div>
+    </section>
+
+    <!-- 个人档案卡 -->
+    <section class="profile-card">
+        <div class="avatar">S</div>
+
+        <div class="tag">Industrial Design Student</div>
+
+        <h1>Sisi Li<br>Personal Portfolio</h1>
+
+        <div class="underline"></div>
+
+        <div class="profile-info">
+            <div>
+                <p><strong>专业：</strong>工业设计工程</p>
+                <p><strong>年级：</strong>研究生一年级</p>
+            </div>
+
+            <div>
+                <p><strong>方向：</strong>产品设计 / 服务设计 / 用户研究</p>
+                <p><strong>城市：</strong>Guangzhou / China</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <!-- 关于我 -->
+        <section class="grid" id="about">
+            <div class="card about">
+                <h2>关于我</h2>
+                <p>
+                    你好，我是 <strong>Sisi Li</strong>，一名工业设计工程专业研究生。
+                    我关注产品体验、服务系统、用户研究与 AI 辅助设计，希望通过设计把复杂的问题转化为更易理解、更有温度的产品与服务。
+                </p>
+
+                <p>
+                    目前我的兴趣方向包括：智能硬件、情绪陪伴产品、数字健康、用户研究、品牌设计、文化文创与服务设计。
+                </p>
+
+                <div class="skill-list">
+                    <span>产品设计</span>
+                    <span>服务设计</span>
+                    <span>用户研究</span>
+                    <span>AI辅助设计</span>
+                    <span>Rhino</span>
+                    <span>KeyShot</span>
+                    <span>Photoshop</span>
+                    <span>Illustrator</span>
+                    <span>Figma</span>
+                </div>
+            </div>
+
+            <div class="card small-card">
+                <h2>关键词</h2>
+                <div class="icon">☘</div>
+                <p>观察生活中的小细节，寻找产品、情绪、文化与用户之间的连接。</p>
+            </div>
+        </section>
+
+        <!-- 项目作品 -->
+        <section class="card projects" id="projects">
+            <h2>项目作品</h2>
+
+            <div class="project-top">
+                <div class="project-item">
+                    <div class="project-icon">♡</div>
+                    <h3>AITA 爱它灵宠</h3>
+                    <p>情绪陪伴产品用户测试、访谈分析与产品改进建议。</p>
+                    <div class="rank-bar">
+                        <span>#2</span>
+                        <span>用户研究</span>
+                    </div>
+                </div>
+
+                <div class="project-item featured">
+                    <div class="project-icon">✦</div>
+                    <h3>AI健康设计研究</h3>
+                    <p>人工智能赋能数字健康设计的知识结构、热点主题与设计框架。</p>
+                    <div class="rank-bar">
+                        <span>#1</span>
+                        <span>研究方向</span>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-icon">🍃</div>
+                    <h3>高州荔枝品牌</h3>
+                    <p>柏桥村农文旅品牌、IP形象、包装与文创设计。</p>
+                    <div class="rank-bar">
+                        <span>#3</span>
+                        <span>品牌设计</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-list">
+                <div class="project-row">
+                    <span>#4</span>
+                    <span>共享式智能爬楼搬运车</span>
+                    <span>智能产品</span>
+                </div>
+
+                <div class="project-row">
+                    <span>#5</span>
+                    <span>Welcome 会议后社区小程序</span>
+                    <span>服务设计</span>
+                </div>
+
+                <div class="project-row">
+                    <span>#6</span>
+                    <span>阳江农文旅IP与文创设计</span>
+                    <span>文旅设计</span>
+                </div>
+
+                <div class="project-row">
+                    <span>#7</span>
+                    <span>月球采冰车概念设计</span>
+                    <span>概念产品</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 生活兴趣 -->
+        <section class="card life" id="life">
+            <h2>生活与兴趣</h2>
+
+            <p>
+                除了设计学习，我也喜欢从生活里收集灵感。展览、旅行、摄影、音乐、包装和日常观察，
+                都可能成为我下一次设计的起点。
+            </p>
+
+            <div class="life-boxes">
+                <div class="life-box">
+                    <span>📷</span>
+                    摄影
+                </div>
+
+                <div class="life-box">
+                    <span>🎨</span>
+                    音乐
+                </div>
+
+                <div class="life-box">
+                    <span>🧃</span>
+                    包装
+                </div>
+
+                <div class="life-box">
+                    <span>🌿</span>
+                    旅行
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="card contact" id="contact">
+            <h2>联系方式</h2>
+
+            <p>邮箱：911529431@qq.com</p>
+            <p>Portfolio：GitHub Pages / Behance / 站酷 / 小红书，可根据需要补充。</p>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        © 2026 Sisi Li Personal Portfolio | Powered by GitHub Pages
+    </footer>
+
+</body>
+</html>
